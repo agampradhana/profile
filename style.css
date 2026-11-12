@@ -1,0 +1,29 @@
+/* hero muncul bertahap */
+@keyframes muncul { from { opacity: 0; transform: translateY(24px); }
+                    to   { opacity: 1; transform: none; } }
+.hero h1 { animation: muncul .8s ease-out both; }
+.hero p  { animation: muncul .8s ease-out .2s both; }
+.hero a  { animation: muncul .8s ease-out .4s both; }
+
+/* kartu terangkat saat hover */
+.kartu { transition: transform .3s, box-shadow .3s; }
+.kartu:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0,0,0,.15); }
+
+/* flip card 3D */
+.flip { perspective: 1000px; width: 240px; height: 300px; }
+.flip-inner { position: relative; width: 100%; height: 100%;
+              transition: transform .6s; transform-style: preserve-3d; }
+.flip:hover .flip-inner { transform: rotateY(180deg); }
+.depan, .belakang { position: absolute; inset: 0; backface-visibility: hidden;
+                    border-radius: 12px; display: grid; place-items: center; }
+.depan { background: #5e3fbe; color: #fff; }
+.belakang { background: #e0457b; color: #fff; transform: rotateY(180deg); padding: 16px; }
+
+/* loader */
+@keyframes putar { to { transform: rotate(360deg); } }
+.loader { width: 40px; height: 40px; border: 4px solid #ddd;
+          border-top-color: #5e3fbe; border-radius: 50%; animation: putar 1s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
